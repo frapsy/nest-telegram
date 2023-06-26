@@ -14,4 +14,5 @@ export interface HandleParameters {
   message?: string | RegExp;
   on?: UpdateType[] | MessageSubTypes[];
   transformations?: ArgumentTransformation[];
+  action?: string;
 }

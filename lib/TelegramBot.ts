@@ -43,6 +43,7 @@ export class TelegramBot {
     this.setupOnMessage(handlers);
     this.setupOnCommand(handlers);
     this.setupOnAnyUpdateType(handlers);
+    this.setupOnAction(handlers);
 
     if (this.usePolling) {
       this.startPolling();
@@ -125,6 +126,14 @@ export class TelegramBot {
         handler.config.command,
         this.adoptHandle(handler),
       );
+    });
+  }
+
+  private setupOnAction(handlers: Handler[]): void {
+    const commandHandlers = handlers.filter(({ config }) => config.action);
+
+    commandHandlers.forEach((handler) => {
+      this.telegrafBot.action(handler.config.action, this.adoptHandle(handler));
     });
   }
 
