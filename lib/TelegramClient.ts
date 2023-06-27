@@ -27,6 +27,10 @@ export class TelegramClient {
     await this.telegram.sendMessage(chatId, text, options);
   }
 
+  public async getChatMember(chatId, userId): Promise<any> {
+    await this.telegram.getChatMember(chatId, userId);
+  }
+
   public async sendMarkdown(
     chatId: string | number,
     markdown: string,
