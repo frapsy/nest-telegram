@@ -39,7 +39,7 @@ let TelegramClient = (() => {
         }
         getChatMember(chatId, userId) {
             return __awaiter(this, void 0, void 0, function* () {
-                yield this.telegram.getChatMember(chatId, userId);
+                return this.telegram.getChatMember(chatId, userId);
             });
         }
         sendMarkdown(chatId, markdown, options) {

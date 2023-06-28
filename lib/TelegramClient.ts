@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Chat } from 'telegraf/typings/telegram-types';
+import { Chat, ChatMember } from 'telegraf/typings/telegram-types';
 import { merge } from 'lodash';
 
 import { TokenInjectionToken } from './TokenInjectionToken';
@@ -27,8 +27,8 @@ export class TelegramClient {
     await this.telegram.sendMessage(chatId, text, options);
   }
 
-  public async getChatMember(chatId, userId): Promise<any> {
-    await this.telegram.getChatMember(chatId, userId);
+  public async getChatMember(chatId, userId): Promise<ChatMember> {
+    return this.telegram.getChatMember(chatId, userId);
   }
 
   public async sendMarkdown(
